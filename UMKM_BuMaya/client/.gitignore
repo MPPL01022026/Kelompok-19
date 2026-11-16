@@ -1,0 +1,35 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ==========================================
+# Halaman yang tidak di-up ke Git (Task Split / Private)
+# ==========================================
+src/pages/MenuPage.jsx
+src/pages/PemasukanPage.jsx
+src/pages/PengeluaranPage.jsx
+src/pages/PesananPage.jsx
+src/pages/RekapUsahaPage.jsx
+src/pages/StokBahanPage.jsx
+
