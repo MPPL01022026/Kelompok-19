@@ -204,7 +204,7 @@ const RekapUsahaPage = () => {
             Modul Rekap Usaha & Laba Rugi
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-            Laporan agregat harian performa finansial Family Kupi ({formatTanggal(dateRange.start)} - {formatTanggal(dateRange.end)})
+            Laporan agregat harian performa finansial Warung Bu Maya ({formatTanggal(dateRange.start)} - {formatTanggal(dateRange.end)})
           </p>
         </div>
         <button
@@ -331,7 +331,7 @@ const RekapUsahaPage = () => {
           <h3 className="text-base font-bold text-[#4A2C0A]">
             Tren Finansial Harian (Pemasukan, Pengeluaran & Laba)
           </h3>
-          <p className="text-xs text-gray-500">Grafik pergerakan kas Family Kupi dalam rentang terpilih</p>
+          <p className="text-xs text-gray-500">Grafik pergerakan kas Warung Bu Maya dalam rentang terpilih</p>
         </div>
         <div className="h-72 w-full">
           <ResponsiveContainer width="100%" height="100%">

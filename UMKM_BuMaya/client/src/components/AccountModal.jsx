@@ -89,7 +89,7 @@ const AccountModal = ({ isOpen, onClose }) => {
               <h3 className="font-extrabold text-base text-[#4A2C0A]">
                 Ganti Username & Kata Sandi
               </h3>
-              <p className="text-xs text-gray-500">Kelola akun pemilik warung Family Kupi</p>
+              <p className="text-xs text-gray-500">Kelola akun pemilik Warung Bu Maya</p>
             </div>
           </div>
           <button

@@ -4,7 +4,7 @@ import { pool } from './connection.js';
 export async function seedDatabase() {
   const client = await pool.connect();
   try {
-    console.log('🌱 Memulai proses seeding data Family Kupi ke Neon PostgreSQL...');
+    console.log('🌱 Memulai proses seeding data Warung Bu Maya ke Neon PostgreSQL...');
     await client.query('BEGIN');
 
     // 1. Seed User (Bu Maya)

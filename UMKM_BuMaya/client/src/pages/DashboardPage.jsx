@@ -137,7 +137,7 @@ const DashboardPage = ({ onNavigate }) => {
             Dashboard Operasional Warung
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-            Ringkasan performa digital twin warung Family Kupi hari ini ({formatTanggal(todayStr)})
+            Ringkasan performa digital twin Warung Bu Maya hari ini ({formatTanggal(todayStr)})
           </p>
         </div>
         <div className="flex items-center space-x-2">
@@ -272,7 +272,7 @@ const DashboardPage = ({ onNavigate }) => {
               <h3 className="text-base font-bold text-[#4A2C0A]">
                 Pemasukan vs Pengeluaran (7 Hari Terakhir)
               </h3>
-              <p className="text-xs text-gray-500">Perbandingan arus kas harian Family Kupi</p>
+              <p className="text-xs text-gray-500">Perbandingan arus kas harian Warung Bu Maya</p>
             </div>
           </div>
           <div className="h-72 w-full">

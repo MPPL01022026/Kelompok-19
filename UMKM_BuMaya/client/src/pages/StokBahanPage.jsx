@@ -162,7 +162,7 @@ const StokBahanPage = () => {
             Modul Stok Bahan Baku
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-            Pantau dan sesuaikan stok operasional dapur warung Family Kupi
+            Pantau dan sesuaikan stok operasional dapur Warung Bu Maya
           </p>
         </div>
         <button

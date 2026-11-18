@@ -68,7 +68,7 @@ app.use(
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
-    app: 'Digital Twin Family Kupi API',
+    app: 'Digital Twin Warung Bu Maya API',
     database: 'Neon PostgreSQL Connected',
     time: new Date().toISOString(),
   });
@@ -101,7 +101,7 @@ app.use((err, req, res, next) => {
 // Hanya panggil listen jika dijalankan secara lokal (bukan di Vercel serverless)
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
   app.listen(PORT, () => {
-    console.log(`🚀 Server Backend Family Kupi berjalan di http://localhost:${PORT}`);
+    console.log(`🚀 Server Backend Warung Bu Maya berjalan di http://localhost:${PORT}`);
     console.log(`📡 CORS diizinkan untuk: ${CLIENT_URL}`);
   });
 }

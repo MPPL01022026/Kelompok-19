@@ -135,7 +135,7 @@ const MenuPage = () => {
             Manajemen Menu Warung
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-            Daftar hidangan makanan, minuman khas kopi, dan paket hemat Family Kupi
+            Daftar hidangan makanan, minuman khas kopi, dan paket hemat Warung Bu Maya
           </p>
         </div>
         <button

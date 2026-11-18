@@ -1,6 +1,6 @@
-# ☕ Digital Twin Family Kupi — Monorepo (Fullstack)
+# ☕ Digital Twin Warung Bu Maya — Monorepo (Fullstack)
 
-> **Sistem Informasi dan Dashboard Digital Twin Operasional UMKM Family Kupi**  
+> **Sistem Informasi dan Dashboard Digital Twin Operasional UMKM Warung Bu Maya**  
 > *Tagline:* Ngopi • Makan • Santai  
 > *Pemilik Warung:* Bu Maya  
 

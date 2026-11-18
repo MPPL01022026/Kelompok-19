@@ -34,6 +34,7 @@ const PesananPage = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [viewDetailOrder, setViewDetailOrder] = useState(null);
   const [orderToDelete, setOrderToDelete] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Form state for new order
   const [customerName, setCustomerName] = useState('');
@@ -129,6 +130,7 @@ const PesananPage = () => {
   const handleOpenAddModal = () => {
     setCustomerName('');
     setOrderStatus('Diproses');
+    setIsSubmitting(false);
     // Pre-populate with first available menu if possible
     const available = menu.filter((m) => m.status === 'Tersedia');
     const defaultMenu = available[0] || menu[0];
@@ -148,40 +150,66 @@ const PesananPage = () => {
     setIsAddModalOpen(true);
   };
 
-  const handleSubmitOrder = (e) => {
+  const handleSubmitOrder = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
     const validItems = orderItems.filter((i) => i.menu_id && i.qty > 0);
     if (!validItems.length) {
       toast.error('Pilih minimal 1 menu yang valid!');
       return;
     }
 
-    const newOrder = addPesanan({
-      nama_pelanggan: customerName,
-      total_harga: calculatedTotal,
-      status: orderStatus,
-      items: validItems,
-    });
+    setIsSubmitting(true);
+    try {
+      const newOrder = await addPesanan({
+        nama_pelanggan: customerName,
+        total_harga: calculatedTotal,
+        status: orderStatus,
+        items: validItems,
+      });
 
-    toast.success(`Pesanan #${newOrder.id} berhasil disimpan!`);
-    if (orderStatus === 'Selesai') {
-      toast.success('Pemasukan penjualan otomatis tercatat di kas!');
+      const orderId = newOrder?.id;
+      if (orderId) {
+        toast.success(`Pesanan #${orderId} berhasil disimpan!`);
+      } else {
+        toast.success('Pesanan berhasil disimpan!');
+      }
+
+      if (orderStatus === 'Selesai') {
+        toast.success('Pemasukan penjualan otomatis tercatat di kas!');
+      }
+      setIsAddModalOpen(false);
+    } catch (err) {
+      console.error('Error submitting order:', err);
+      toast.error('Gagal menyimpan pesanan. Silakan coba lagi.');
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsAddModalOpen(false);
   };
 
-  const handleStatusChange = (orderId, newStatus) => {
-    updatePesananStatus(orderId, newStatus);
-    toast.success(`Status pesanan #${orderId} diubah menjadi ${newStatus}`);
-    if (newStatus === 'Selesai') {
-      toast.success('Pemasukan otomatis tercatat!');
+  const handleStatusChange = async (orderId, newStatus) => {
+    try {
+      await updatePesananStatus(orderId, newStatus);
+      toast.success(`Status pesanan #${orderId} diubah menjadi ${newStatus}`);
+      if (newStatus === 'Selesai') {
+        toast.success('Pemasukan otomatis tercatat!');
+      }
+    } catch (err) {
+      console.error('Error updating order status:', err);
+      toast.error('Gagal memperbarui status pesanan.');
     }
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (orderToDelete) {
-      deletePesanan(orderToDelete.id);
-      toast.success(`Pesanan #${orderToDelete.id} berhasil dihapus.`);
+      try {
+        await deletePesanan(orderToDelete.id);
+        toast.success(`Pesanan #${orderToDelete.id} berhasil dihapus.`);
+      } catch (err) {
+        console.error('Error deleting order:', err);
+        toast.error('Gagal menghapus pesanan.');
+      }
       setOrderToDelete(null);
     }
   };
@@ -195,7 +223,7 @@ const PesananPage = () => {
             Modul Pesanan Warung
           </h1>
           <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-            Kelola transaksi pesanan pelanggan Family Kupi secara realtime
+            Kelola transaksi pesanan pelanggan Warung Bu Maya secara realtime
           </p>
         </div>
         <button
@@ -392,7 +420,7 @@ const PesananPage = () => {
                 </div>
                 <div>
                   <h3 className="font-extrabold text-lg text-[#4A2C0A]">Buat Pesanan Baru</h3>
-                  <p className="text-xs text-gray-500">Isi data pesanan meja / walk-in Family Kupi</p>
+                  <p className="text-xs text-gray-500">Isi data pesanan meja / walk-in Warung Bu Maya</p>
                 </div>
               </div>
               <button
@@ -530,9 +558,10 @@ const PesananPage = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#E8913A] to-[#D57C26] hover:from-[#D57C26] hover:to-[#B4631A] rounded-xl shadow-md shadow-orange-500/20 transition-all"
+                  disabled={isSubmitting}
+                  className="px-6 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#E8913A] to-[#D57C26] hover:from-[#D57C26] hover:to-[#B4631A] rounded-xl shadow-md shadow-orange-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Simpan Pesanan
+                  {isSubmitting ? 'Menyimpan...' : 'Simpan Pesanan'}
                 </button>
               </div>
             </form>
@@ -565,7 +594,7 @@ const PesananPage = () => {
             {/* Struk Content */}
             <div className="p-6 space-y-4">
               <div className="text-center pb-3 border-b border-dashed border-amber-200">
-                <h4 className="font-black text-lg text-[#4A2C0A]">Family Kupi</h4>
+                <h4 className="font-black text-lg text-[#4A2C0A]">Warung Bu Maya</h4>
                 <p className="text-xs text-[#E8913A] font-semibold">Ngopi • Makan • Santai</p>
                 <p className="text-[11px] text-gray-400 mt-0.5">Pemilik: Bu Maya</p>
               </div>

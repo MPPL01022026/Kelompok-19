@@ -1,6 +1,6 @@
-# ☕ Digital Twin Family Kupi — Frontend (Client)
+# ☕ Digital Twin Warung Bu Maya — Frontend (Client)
 
-Panduan lengkap instalasi dan menjalankan antarmuka (*frontend*) aplikasi **Digital Twin Family Kupi** pada laptop baru / laptop kawan.
+Panduan lengkap instalasi dan menjalankan antarmuka (*frontend*) aplikasi **Digital Twin Warung Bu Maya** pada laptop baru / laptop kawan.
 
 ---
 
@@ -72,7 +72,7 @@ Jika berhasil, terminal akan menampilkan output seperti ini:
 ### Langkah 5: Buka di Browser
 1. Buka peramban web (Chrome / Edge / Firefox).
 2. Ketik alamat: **`http://localhost:5173`** lalu tekan Enter.
-3. Halaman Login **Digital Twin Family Kupi** akan tampil.
+3. Halaman Login **Digital Twin Warung Bu Maya** akan tampil.
 
 ---
 

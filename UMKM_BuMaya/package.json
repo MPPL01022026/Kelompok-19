@@ -1,13 +1,14 @@
 {
-  "name": "digital-twin-family-kupi",
+  "name": "digital-twin-warung-bu-maya",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Digital Twin Family Kupi — Sistem Informasi dan Statistik Penjualan UMKM Bu Maya",
+  "description": "Digital Twin Warung Bu Maya — Sistem Informasi dan Statistik Penjualan UMKM Bu Maya",
   "workspaces": [
     "client",
     "server"
   ],
+  
   "scripts": {
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgYellow.bold\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
     "start": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgYellow.bold\" \"npm --prefix server start\" \"npm --prefix client run dev\"",

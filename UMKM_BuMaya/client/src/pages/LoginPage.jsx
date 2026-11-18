@@ -61,7 +61,7 @@ const LoginPage = () => {
             <Coffee className="w-7 h-7" />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tight text-[#FFF5E6]">Family Kupi</h1>
+            <h1 className="text-2xl font-black tracking-tight text-[#FFF5E6]">Warung Bu Maya</h1>
             <p className="text-xs font-semibold text-amber-200 tracking-wider">NGOPI • MAKAN • SANTAI</p>
           </div>
         </div>
@@ -70,8 +70,8 @@ const LoginPage = () => {
         <div className="relative z-10 my-8 bg-black/25 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-2xl">
           <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden mb-4 border border-white/20">
             <img 
-              src="/warung_hero.webp" 
-              alt="Warung Family Kupi" 
+              src="/observasi_wawancara.jpg" 
+              alt="Observasi Wawancara Warung Bu Maya" 
               className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
               onError={(e) => {
                 e.target.style.display = 'none';
@@ -84,16 +84,16 @@ const LoginPage = () => {
             </div>
           </div>
           <h2 className="text-xl font-bold text-white leading-snug">
-            Sistem Informasi & Digital Twin Operasional
+            Sistem Informasi & Digital Twin Operasional Warung Bu Maya
           </h2>
           <p className="text-xs sm:text-sm text-amber-100/80 mt-2 leading-relaxed">
-            Pantau arus pesanan, ketersediaan stok bahan baku, pemasukan harian, dan ringkasan laba usaha Family Kupi dalam satu dashboard modern dan terintegrasi.
+            Pantau arus pesanan, ketersediaan stok bahan baku, pemasukan harian, dan ringkasan laba usaha Warung Bu Maya dalam satu dashboard modern dan terintegrasi.
           </p>
         </div>
 
         {/* Footer info */}
         <div className="relative z-10 text-xs text-amber-200/70">
-          <p>© 2026 Digital Twin Family Kupi — Tim Pengembang Kelompok 19</p>
+          <p>© 2026 Digital Twin Warung Bu Maya — Tim Pengembang Kelompok 19</p>
         </div>
       </div>
 
@@ -109,7 +109,7 @@ const LoginPage = () => {
               Masuk Dashboard
             </h2>
             <p className="mt-1 text-sm text-gray-500">
-              Silakan masukkan akun Anda untuk mengelola warung Family Kupi.
+              Silakan masukkan akun Anda untuk mengelola Warung Bu Maya.
             </p>
           </div>
 
@@ -192,7 +192,7 @@ const LoginPage = () => {
           </form>
 
           <div className="pt-2 text-center text-xs text-gray-400">
-            Family Kupi • Warung Makan & Kopi Bu Maya
+            Warung Bu Maya • Ngopi • Makan • Santai
           </div>
         </div>
       </div>

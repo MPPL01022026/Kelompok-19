@@ -6,7 +6,7 @@ import { formatTanggalLengkap } from '../utils/formatters';
 
 const Header = ({ setIsMobileOpen, onOpenStokTab, onOpenAccountModal }) => {
   const { user } = useAuth();
-  const { stokAlertCount, isBackendConnected } = useStore();
+  const { stokAlertCount } = useStore();
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -45,11 +45,6 @@ const Header = ({ setIsMobileOpen, onOpenStokTab, onOpenAccountModal }) => {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5 animate-ping"></span>
               Warung Buka
             </span>
-            {isBackendConnected && (
-              <span className="hidden md:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
-                ⚡ Neon PostgreSQL
-              </span>
-            )}
           </div>
           <p className="text-xs text-gray-500 flex items-center mt-0.5">
             <span className="font-medium text-amber-900/70">{todayStr}</span>

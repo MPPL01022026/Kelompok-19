@@ -77,7 +77,7 @@ const Sidebar = ({
             {!isCollapsed && (
               <div className="leading-tight truncate">
                 <h1 className="font-extrabold text-base text-[#4A2C0A] tracking-tight truncate">
-                  Family Kupi
+                  Warung Bu Maya
                 </h1>
                 <p className="text-[11px] font-medium text-[#E8913A] tracking-wide truncate">
                   Ngopi • Makan • Santai
@@ -150,7 +150,7 @@ const Sidebar = ({
           {/* Logout */}
           <button
             onClick={() => {
-              if (window.confirm('Yakin ingin keluar dari sistem Family Kupi?')) {
+              if (window.confirm('Yakin ingin keluar dari sistem Warung Bu Maya?')) {
                 logout();
                 toast.success('Sampai jumpa Bu Maya!');
               }
