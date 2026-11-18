@@ -23,13 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# ==========================================
-# Halaman yang tidak di-up ke Git (Task Split / Private)
-# ==========================================
-src/pages/MenuPage.jsx
-src/pages/PemasukanPage.jsx
-src/pages/PengeluaranPage.jsx
-src/pages/PesananPage.jsx
-src/pages/RekapUsahaPage.jsx
-src/pages/StokBahanPage.jsx
+
 

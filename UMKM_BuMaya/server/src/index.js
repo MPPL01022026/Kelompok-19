@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import dotenv from 'dotenv';
+import connectPgSimple from 'connect-pg-simple';
+import { pool } from './db/connection.js';
 
 import authRoutes from './routes/auth.js';
 import menuRoutes from './routes/menu.js';
@@ -17,6 +19,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+const isProduction = process.env.NODE_ENV === 'production' || !!process.env.VERCEL;
+
+// Trust proxy for secure cookies behind reverse proxies like Vercel
+app.set('trust proxy', 1);
 
 // Middleware CORS
 app.use(
@@ -36,14 +42,21 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Session middleware
+// Session store setup (using PostgreSQL so sessions persist across Serverless lambdas)
+const PgSession = connectPgSimple(session);
+
 app.use(
   session({
+    store: new PgSession({
+      pool: pool,
+      tableName: 'user_sessions',
+      createTableIfMissing: true,
+    }),
     secret: process.env.SESSION_SECRET || 'familykupi_secret_key_bumaya_2026',
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // set to true in HTTPS production
+      secure: isProduction,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
       sameSite: 'lax',
@@ -85,7 +98,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server Backend Family Kupi berjalan di http://localhost:${PORT}`);
-  console.log(`📡 CORS diizinkan untuk: ${CLIENT_URL}`);
-});
+// Hanya panggil listen jika dijalankan secara lokal (bukan di Vercel serverless)
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server Backend Family Kupi berjalan di http://localhost:${PORT}`);
+    console.log(`📡 CORS diizinkan untuk: ${CLIENT_URL}`);
+  });
+}
+
+export default app;

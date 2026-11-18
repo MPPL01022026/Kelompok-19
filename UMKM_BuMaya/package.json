@@ -2,7 +2,12 @@
   "name": "digital-twin-family-kupi",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Digital Twin Family Kupi — Sistem Informasi dan Statistik Penjualan UMKM Bu Maya",
+  "workspaces": [
+    "client",
+    "server"
+  ],
   "scripts": {
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgYellow.bold\" \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
     "start": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgYellow.bold\" \"npm --prefix server start\" \"npm --prefix client run dev\"",
@@ -11,6 +16,16 @@
     "build": "npm --prefix client run build",
     "db:init": "npm --prefix server run db:init",
     "db:seed": "npm --prefix server run db:seed"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^10.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.4",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
